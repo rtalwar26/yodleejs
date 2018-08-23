@@ -13,18 +13,18 @@ class Yodlee {
         };
     }
     constructor() {
-        this.net = axios_1.default.create({
+        this._net = axios_1.default.create({
             baseURL: 'https://some-domain.com/api/',
             timeout: 1000,
             headers: Object.assign({}, this.defaultHeaders())
         });
     }
     async registerUser(payload) {
-        let resp = await this.net.post('/user/register', payload);
+        let resp = await this._net.post('/user/register', payload);
         return resp.data;
     }
     async cobrandLoginSession(login, password, locale) {
-        let resp = await this.net.post('/cobrand/login', {
+        let resp = await this._net.post('/cobrand/login', {
             "cobrand": {
                 "cobrandLogin": login,
                 "cobrandPassword": password,
@@ -34,7 +34,7 @@ class Yodlee {
         return resp.data;
     }
     async userLogin(loginName, password, locale) {
-        let resp = await this.net.post('/cobrand/login', {
+        let resp = await this._net.post('/cobrand/login', {
             "user": {
                 "loginName": loginName,
                 "password": password,

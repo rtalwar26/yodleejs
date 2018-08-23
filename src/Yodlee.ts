@@ -4,7 +4,7 @@
 import Axios, * as axios from "axios"
 
 export default class Yodlee {
-    net:axios.AxiosInstance
+    private _net:axios.AxiosInstance
     private _cobrandConfig:Yodlee.CobrandConfig
 
     setCobrandConfig(config:Yodlee.CobrandConfig){
@@ -19,7 +19,7 @@ export default class Yodlee {
     }
     constructor(){
         
-        this.net = Axios.create({
+        this._net = Axios.create({
             baseURL: 'https://some-domain.com/api/',
             timeout: 1000,
             headers: {
@@ -30,12 +30,12 @@ export default class Yodlee {
     }
 
     async registerUser(payload:Yodlee.UserRegistration):Promise<Yodlee.UserLoginResponse>{
-        let resp = await this.net.post('/user/register',payload);
+        let resp = await this._net.post('/user/register',payload);
         return resp.data;
     }
 
     async cobrandLoginSession(login:String,password:string,locale?:string):Promise<Yodlee.CobrandSession>{
-        let resp = await this.net.post('/cobrand/login',{
+        let resp = await this._net.post('/cobrand/login',{
             
                 "cobrand":      {
                   "cobrandLogin": login,
@@ -47,7 +47,7 @@ export default class Yodlee {
         return resp.data;
     }
     async userLogin(loginName:string,password:string,locale?:string):Promise<Yodlee.UserLoginResponse>{
-        let resp = await this.net.post('/cobrand/login',{
+        let resp = await this._net.post('/cobrand/login',{
             
             "user":      {
                 "loginName": loginName,
