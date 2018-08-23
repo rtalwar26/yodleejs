@@ -14,7 +14,7 @@ class Yodlee {
     }
     constructor() {
         this._net = axios_1.default.create({
-            baseURL: 'https://some-domain.com/api/',
+            baseURL: 'https://developer.api.yodlee.com/ysl',
             timeout: 1000,
             headers: Object.assign({}, this.defaultHeaders())
         });

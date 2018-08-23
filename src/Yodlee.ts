@@ -20,7 +20,7 @@ export default class Yodlee {
     constructor(){
         
         this._net = Axios.create({
-            baseURL: 'https://some-domain.com/api/',
+            baseURL: 'https://developer.api.yodlee.com/ysl',
             timeout: 1000,
             headers: {
                 ...this.defaultHeaders()
