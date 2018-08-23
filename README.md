@@ -1,0 +1,1 @@
+A [yodlee](developer.yodlee.com) api wrapper for browser and nodejs .
