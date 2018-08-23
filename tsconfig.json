@@ -10,9 +10,7 @@
         
       }      
     },
-    "include": [
-      "./index.d.ts"
-    ],
+    
     "exclude": [
       
     ]
