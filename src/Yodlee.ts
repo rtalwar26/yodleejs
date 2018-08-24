@@ -46,8 +46,8 @@ export default class Yodlee {
         });
         return resp.data;
     }
-    async userLogin(loginName:string,password:string,locale?:string):Promise<Yodlee.UserLoginResponse>{
-        let resp = await this._net.post('/cobrand/login',{
+    async userLogin(loginName:string,password:string,cobrandToken:string,locale?:string):Promise<Yodlee.UserLoginResponse>{
+        let resp = await this._net.post('/user/login',{
             
             "user":      {
                 "loginName": loginName,
@@ -55,6 +55,11 @@ export default class Yodlee {
                 "locale": locale || "en_US"
                }
            
+    },{
+        headers:{
+            ... this.defaultHeaders(),
+            Authorization:`{cobSession=${cobrandToken}`
+        }
     });
     return resp.data;
     }
