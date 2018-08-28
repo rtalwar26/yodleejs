@@ -2,6 +2,7 @@
 /// <reference path="../index.d.ts" />
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
+const apiVersion = '1.1';
 class Yodlee {
     setCobrandConfig(config) {
         this._cobrandConfig = config;
@@ -9,7 +10,7 @@ class Yodlee {
     defaultHeaders(isDev = false) {
         return {
             'Cobrand-Name': this._cobrandConfig.name,
-            'Api-Version': '1.1'
+            'Api-Version': `${apiVersion}`
         };
     }
     constructor() {
@@ -33,13 +34,21 @@ class Yodlee {
         });
         return resp.data;
     }
-    async userLogin(loginName, password, locale) {
-        let resp = await this._net.post('/cobrand/login', {
+    async userLogin(loginName, password, cobrandToken, locale) {
+        let resp = await this._net.post('/user/login', {
             "user": {
                 "loginName": loginName,
                 "password": password,
                 "locale": locale || "en_US"
             }
+        }, {
+            headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken}}` })
+        });
+        return resp.data;
+    }
+    async userAccessTokens(appIds, cobrandToken, userToken) {
+        let resp = await this._net.post(`/user/accessTokens?appIds=${appIds.join(",")}`, {
+            headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken},userSession=${userToken}}` })
         });
         return resp.data;
     }

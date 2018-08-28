@@ -39,6 +39,17 @@ declare namespace Yodlee {
         }
     }
 
+    export interface UserAccessTokenResponse {
+        user:{
+         accessTokens:[
+          {
+             appId:string,
+             value:string,
+             url:string
+          }
+         ]
+        }
+     }
     export interface UserLoginResponse {
         user: {
             id: string,
