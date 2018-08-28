@@ -6,10 +6,10 @@ import Axios, * as axios from "axios"
 const apiVersion = '1.1'
 export default class Yodlee {
     private _net: axios.AxiosInstance
-    private _cobrandConfig: YodleeSchema.CobrandConfig
+    private _cobrandConfig: YodleeSchema.CobrandConfig = {name:""}
     
-    setCobrandConfig(config: YodleeSchema.CobrandConfig) {
-        this._cobrandConfig = config;
+    setCobrandName(name: string) {
+        this._cobrandConfig.name = name;
     }
 
     private defaultHeaders(isDev: boolean = false): Object {
@@ -18,8 +18,8 @@ export default class Yodlee {
             'Api-Version': `${apiVersion}`
         }
     }
-    constructor() {
-
+    constructor(cobrandName:string) {
+        this.setCobrandName(cobrandName);
         this._net = Axios.create({
             baseURL: 'https://developer.api.yodlee.com/ysl',
             timeout: 1000,

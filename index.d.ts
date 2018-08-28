@@ -9,8 +9,7 @@ declare namespace YodleeSchema {
     }
     export interface CobrandConfig{
         name:string,
-        login:string,
-        password:string
+        
     }
     export interface UserRegistration {
         userParam: {
@@ -72,3 +71,4 @@ declare namespace YodleeSchema {
     }
 
 }
+
