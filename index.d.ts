@@ -1,4 +1,4 @@
-declare namespace Yodlee {
+declare namespace YodleeSchema {
     export interface CobrandSession{
         cobrandId: number,
         applicationId: string,
