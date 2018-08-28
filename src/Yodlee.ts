@@ -35,7 +35,7 @@ export default class Yodlee {
         return resp.data;
     }
 
-    async cobrandLoginSession(login: String, password: string, locale?: string): Promise<Yodlee.CobrandSession> {
+    async cobrandLoginSession(login: string, password: string, locale?: string): Promise<Yodlee.CobrandSession> {
         let resp = await this._net.post('/cobrand/login', {
 
             "cobrand": {
