@@ -23,36 +23,56 @@ class Yodlee {
         };
     }
     async registerUser(payload) {
-        let resp = await this._net.post('/user/register', payload);
-        return resp.data;
+        try {
+            let resp = await this._net.post('/user/register', payload);
+            return resp.data;
+        }
+        catch (e) {
+            throw new Error(e.response && JSON.stringify(e.response.data));
+        }
     }
     async cobrandLoginSession(login, password, locale) {
-        let resp = await this._net.post('/cobrand/login', {
-            "cobrand": {
-                "cobrandLogin": login,
-                "cobrandPassword": password,
-                "locale": locale || "en_US"
-            }
-        });
-        return resp.data;
+        try {
+            let resp = await this._net.post('/cobrand/login', {
+                "cobrand": {
+                    "cobrandLogin": login,
+                    "cobrandPassword": password,
+                    "locale": locale || "en_US"
+                }
+            });
+            return resp.data;
+        }
+        catch (e) {
+            throw new Error(e.response && JSON.stringify(e.response.data));
+        }
     }
     async userLogin(loginName, password, cobrandToken, locale) {
-        let resp = await this._net.post('/user/login', {
-            "user": {
-                "loginName": loginName,
-                "password": password,
-                "locale": locale || "en_US"
-            }
-        }, {
-            headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken}}` })
-        });
-        return resp.data;
+        try {
+            let resp = await this._net.post('/user/login', {
+                "user": {
+                    "loginName": loginName,
+                    "password": password,
+                    "locale": locale || "en_US"
+                }
+            }, {
+                headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken}}` })
+            });
+            return resp.data;
+        }
+        catch (e) {
+            throw new Error(e.response && JSON.stringify(e.response.data));
+        }
     }
     async userAccessTokens(appIds, cobrandToken, userToken) {
-        let resp = await this._net.post(`/user/accessTokens?appIds=${appIds.join(",")}`, {
-            headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken},userSession=${userToken}}` })
-        });
-        return resp.data;
+        try {
+            let resp = await this._net.post(`/user/accessTokens?appIds=${appIds.join(",")}`, {
+                headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken},userSession=${userToken}}` })
+            });
+            return resp.data;
+        }
+        catch (e) {
+            throw new Error(e.response && JSON.stringify(e.response.data));
+        }
     }
 }
 exports.default = Yodlee;

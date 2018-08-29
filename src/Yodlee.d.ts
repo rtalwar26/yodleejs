@@ -3,7 +3,7 @@ export default class Yodlee {
     private _net;
     private _cobrandConfig;
     setCobrandName(name: string): void;
-    private defaultHeaders(isDev?);
+    private defaultHeaders;
     constructor(cobrandName: string);
     registerUser(payload: YodleeSchema.UserRegistration): Promise<YodleeSchema.UserLoginResponse>;
     cobrandLoginSession(login: string, password: string, locale?: string): Promise<YodleeSchema.CobrandSession>;
