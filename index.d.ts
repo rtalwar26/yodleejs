@@ -1,5 +1,5 @@
 declare namespace YodleeSchema {
-    export interface CobrandSession{
+    export interface CobrandSession {
         cobrandId: number,
         applicationId: string,
         locale: string,
@@ -7,48 +7,48 @@ declare namespace YodleeSchema {
             cobSession: string
         }
     }
-    export interface CobrandConfig{
-        name:string,
-        
+    export interface CobrandConfig {
+        name: string,
+
     }
     export interface UserRegistration {
-        userParam: {
-            user: {
-                loginName: string,
-                password: string,
-                email: string,
-                name?: {
-                    first: string,
-                    last: string
-                },
-                address?: {
-                    address1: string, // "200 Lincoln Ave"
-                    state: string, // "CA"
-                    city: string, // "Salinas"
-                    zip: string, // "93901"
-                    country: string, // "US"
-                },
-                preferences?: {
-                    currency: string, // "USD"
-                    timeZone: string, // "PST"
-                    dateFormat: string, //"MM/dd/yyyy"
-                    locale: string, //"en_US"
-                }
+
+        user: {
+            loginName: string,
+            password: string,
+            email: string,
+            name?: {
+                first: string,
+                last: string
+            },
+            address?: {
+                address1: string, // "200 Lincoln Ave"
+                state: string, // "CA"
+                city: string, // "Salinas"
+                zip: string, // "93901"
+                country: string, // "US"
+            },
+            preferences?: {
+                currency: string, // "USD"
+                timeZone: string, // "PST"
+                dateFormat: string, //"MM/dd/yyyy"
+                locale: string, //"en_US"
             }
         }
+
     }
 
     export interface UserAccessTokenResponse {
-        user:{
-         accessTokens:[
-          {
-             appId:string,
-             value:string,
-             url:string
-          }
-         ]
+        user: {
+            accessTokens: [
+                {
+                    appId: string,
+                    value: string,
+                    url: string
+                }
+            ]
         }
-     }
+    }
     export interface UserLoginResponse {
         user: {
             id: string,
