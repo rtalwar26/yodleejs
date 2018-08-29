@@ -11,8 +11,7 @@ declare namespace YodleeSchema {
         name:string,
         
     }
-    export interface UserRegistration {
-        userParam: {
+    export interface UserRegistration {        
             user: {
                 loginName: string,
                 password: string,
@@ -33,8 +32,7 @@ declare namespace YodleeSchema {
                     timeZone: string, // "PST"
                     dateFormat: string, //"MM/dd/yyyy"
                     locale: string, //"en_US"
-                }
-            }
+                }            
         }
     }
 
