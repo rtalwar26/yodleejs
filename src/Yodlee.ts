@@ -22,7 +22,7 @@ export default class Yodlee {
         this.setCobrandName(cobrandName);
         this._net = Axios.create({
             baseURL: 'https://developer.api.yodlee.com/ysl',
-            timeout: 1000,
+            timeout: 10000,
             headers: {
                 ...this.defaultHeaders()
             }
