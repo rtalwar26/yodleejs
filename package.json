@@ -1,6 +1,6 @@
 {
   "name": "node-yodlee",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An Nodejs api wrapper for yodlee apis. See https://developer.yodlee.com",
   "main": "index.js",
   "scripts": {
