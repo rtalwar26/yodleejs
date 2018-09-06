@@ -60,6 +60,7 @@ class Yodlee {
             return resp.data;
         }
         catch (e) {
+            // console.log('e.response',e.response.status);
             throw new Error(e.response && JSON.stringify(e.response.data));
         }
     }
