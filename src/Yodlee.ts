@@ -80,7 +80,7 @@ export default class Yodlee {
 
     async userAccessTokens(appIds: string[], cobrandToken: string, userToken: string): Promise<YodleeSchema.UserAccessTokenResponse> {
         try {
-            let resp = await this._net.post(`/user/accessTokens?appIds=${appIds.join(",")}`, {
+            let resp = await this._net.get(`/user/accessTokens?appIds=${appIds.join(",")}`, {
                 headers: {
                     ... this.defaultHeaders(),
                     Authorization: `{cobSession=${cobrandToken},userSession=${userToken}}`

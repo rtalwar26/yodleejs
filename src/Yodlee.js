@@ -66,7 +66,7 @@ class Yodlee {
     }
     async userAccessTokens(appIds, cobrandToken, userToken) {
         try {
-            let resp = await this._net.post(`/user/accessTokens?appIds=${appIds.join(",")}`, {
+            let resp = await this._net.get(`/user/accessTokens?appIds=${appIds.join(",")}`, {
                 headers: Object.assign({}, this.defaultHeaders(), { Authorization: `{cobSession=${cobrandToken},userSession=${userToken}}` })
             });
             return resp.data;
